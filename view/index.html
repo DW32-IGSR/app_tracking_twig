@@ -75,6 +75,21 @@
             {% endfor %}
         </table>
         
+        <form action='index.php?action=posicionar' method='POST' name='posicionar'>
+        <table>
+            <tr>
+                <td> Título: </td> <td> <input type='text' name='titulo'> </td>
+            </tr>
+            <tr>
+                <td> Latitud: </td> <td> <input type='text' name='latitud'> </td>
+            </tr>
+            <tr>
+                <td> Longitud: </td> <td> <input type='text' name='longitud'> </td>
+            </tr>
+        </table>
+        <input type='submit' name='crearPosicion' value='Enviar'>
+        </form>
+        
         <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg&callback=initialize' async defer></script>
         <script>
         var milatitud;

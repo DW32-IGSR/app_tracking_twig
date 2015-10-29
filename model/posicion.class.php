@@ -25,7 +25,7 @@ class Posicion {
         return $this->longitud;
     }
     public function getHora(){
-        return $this->latitud;
+        return $this->hora;
     }
     public function getId_usuario(){
         return $this->id_usuario;

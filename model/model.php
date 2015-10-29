@@ -66,8 +66,6 @@ class Model {
     }
     
     public function buscar_posiciones(){
-        //se guardan las posiciones en un array y se manda las coordenadas y el texto que se muestra
-        echo("dentro de buscar_posiciones()");
         require_once("conexion.class.php");
         $db = Conexion::conectar();
     	$stmt = $db->prepare("SELECT id_posicion, latitud, longitud, hora, titulo FROM posicion WHERE id_usuario=:id_usuario");
@@ -76,21 +74,15 @@ class Model {
         $stmt->bindParam(":id_usuario", $idusuario, PDO::PARAM_INT);
         $stmt->execute();
         //$respuesta="\n";
+        $_SESSION['id_usuario']=1;
         $marcadores = array();
         foreach ($stmt->fetchAll() as $row) {
-            //var_dump($row);
-            //echo "hola?: ".$row['latitud'];
-            //$posicion=new Posicion($row['id_posicion'],$row['latitud'],$row["longitud"],$row["hora"],$_SESSION['id_usuario'], $row['titulo']);
-            //array_push($marcadores, array($row['latitud'], $row["longitud"], $row['titulo']));
-            array_push($marcadores, new Posicion($row['id_posicion'],$row['latitud'],$row['longitud'],/*$row['hora'],$_SESSION['id_usuario'],*/$row['titulo']));
-            //$script=View::marcarPosicion($row['titulo'],$row['latitud'],$row["longitud"]);
-            //$respuesta.= "<tr>".$posicion->mostrar()."</tr>\n".$script."\n";
+            array_push($marcadores, new Posicion($row['id_posicion'],$row['latitud'],$row['longitud'],$row['hora'],$_SESSION['id_usuario'],$row['titulo']));
         }
         return $marcadores;
-        //return $respuesta;
     }
     
-    public function buscarUsuario($usuario, $pass, $latitud, $longitud/*, $titulo*/) {
+    public function buscarUsuario($usuario, $pass, $latitud, $longitud) {
         require_once("conexion.class.php");
         $db = Conexion::conectar();
     	$stmt = $db->prepare("SELECT * FROM usuario WHERE usuario=:usuario and pass=:pass");
@@ -105,8 +97,6 @@ class Model {
             //session_start();
             $_SESSION['id_usuario']=$row["id_usuario"];
             
-            //despues de iniciar se sesion se guarda la posicion en la base de datos
-            //titulo hora
             $titulo=date("Y-m-d H:i:s");
             $this->insertarPosicion($row['id_usuario'], $latitud, $longitud, $titulo);
         }

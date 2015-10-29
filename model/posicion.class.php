@@ -1,24 +1,43 @@
 <?php
 class Posicion {
+    //poner private y hacer los geter
     private $latitud;
     private $longitud;
-    //private $hora;
-    //private $id_usuario;
+    private $hora;
+    private $id_usuario;
     private $id_posicion;
     private $titulo;
-    //private $marca;
     
-    public function __construct($id_posicion, $latitud, $longitud,/* $hora, $id_usuario,*/ $titulo) {
+    public function __construct($id_posicion, $latitud, $longitud, $hora, $id_usuario, $titulo) {
         $this->id_posicion = $id_posicion;
         $this->latitud = $latitud;
         $this->longitud = $longitud;
-        //$this->hora = $hora;
-        //$this->id_usuario = $id_usuario;
+        $this->hora = $hora;
+        $this->id_usuario = $id_usuario;
         $this->titulo = $titulo;
-        //$this->marca = $marca;
         //$this->model->insertarPosicion($latitud, $longitud, $hora, $id_usuario);
     }
-    public function mostrar() {
+    
+    public function getLatitud(){
+        return $this->latitud;
+    }
+    public function getLongitud(){
+        return $this->longitud;
+    }
+    public function getHora(){
+        return $this->latitud;
+    }
+    public function getId_usuario(){
+        return $this->id_usuario;
+    }    
+    public function getId_posicion(){
+        return $this->id_posicion;
+    }
+    public function getTitulo(){
+        return $this->titulo;
+    }
+    
+    /*public function mostrar() {
        	return "<form action='index.php?action=modificarPosicion' method='POST' name='varias'>
        	<td>$this->id_posicion</td> <input hidden name='id_posicion' value=$this->id_posicion />
        	<td><input name='titulo' value='$this->titulo' /></td>
@@ -31,7 +50,7 @@ class Posicion {
            	<input type='submit' name='borrar' value='Borrar'>
        	</td>
        	</form>";
-    }
+    }*/
     
     /*public function formEditarPosicion() {
         if ($_POST['editar']){

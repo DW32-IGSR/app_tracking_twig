@@ -27,7 +27,7 @@ class View {
 	    $abrir.="<body  onload='mueveReloj()'>\n";
         return $abrir;
 	}*/
-	public function navbar(){
+	/*public function navbar(){
 	    $navbar='<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -74,7 +74,7 @@ class View {
 
     </nav>';
 	    return $navbar;
-	}    
+	}*/    
 	/*public function scripts(){
 	    $scripts = "<script>var marcadores=[];
         </script>";
@@ -144,7 +144,7 @@ class View {
         return $cerrar;
 	}*/
 	
-    public function output(){
+    /*public function output(){
         $respuesta.="<table class='table table-striped'>
         <tr>
             <th>Id</th><th>Nombre</th><th>Latitud</th><th>Longitud</th><th>Fecha</th><th>Usuario</th><td></td>
@@ -156,7 +156,7 @@ class View {
         </tr>";
         $respuesta.="</table>";        
         return $respuesta;
-    }
+    }*/
     
     public function posicionManual() {
         $respuesta = "<br><form action='index.php?action=posicionar' method='POST' name='posicionar'>

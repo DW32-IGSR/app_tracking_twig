@@ -66,24 +66,28 @@ class Model {
     }
     
     public function buscar_posiciones(){
+        //se guardan las posiciones en un array y se manda las coordenadas y el texto que se muestra
+        echo("dentro de buscar_posiciones()");
         require_once("conexion.class.php");
         $db = Conexion::conectar();
-        //$sql="SELECT latitud, longitud, hora FROM posicion WHERE id_usuario=".$this->id_usuario;
-        //echo $sql;
     	$stmt = $db->prepare("SELECT id_posicion, latitud, longitud, hora, titulo FROM posicion WHERE id_usuario=:id_usuario");
-        $stmt->bindParam(":id_usuario", $_SESSION['id_usuario'], PDO::PARAM_INT);
+        //$stmt->bindParam(":id_usuario", $_SESSION['id_usuario'], PDO::PARAM_INT);
+        $idusuario=1;
+        $stmt->bindParam(":id_usuario", $idusuario, PDO::PARAM_INT);
         $stmt->execute();
-        $respuesta="\n";
+        //$respuesta="\n";
+        $marcadores = array();
         foreach ($stmt->fetchAll() as $row) {
             //var_dump($row);
             //echo "hola?: ".$row['latitud'];
-            $posicion=new Posicion($row['id_posicion'],$row['latitud'],$row["longitud"],$row["hora"],$_SESSION['id_usuario'], $row['titulo']);
-            $script=View::marcarPosicion($row['titulo'],$row['latitud'],$row["longitud"]);
-            //$script=View::marcarPosicion($row['latitud'],$row["longitud"]);
-            $respuesta.= "<tr>".$posicion->mostrar()."</tr>\n".$script."\n";
+            //$posicion=new Posicion($row['id_posicion'],$row['latitud'],$row["longitud"],$row["hora"],$_SESSION['id_usuario'], $row['titulo']);
+            //array_push($marcadores, array($row['latitud'], $row["longitud"], $row['titulo']));
+            array_push($marcadores, new Posicion($row['id_posicion'],$row['latitud'],$row['longitud'],/*$row['hora'],$_SESSION['id_usuario'],*/$row['titulo']));
+            //$script=View::marcarPosicion($row['titulo'],$row['latitud'],$row["longitud"]);
+            //$respuesta.= "<tr>".$posicion->mostrar()."</tr>\n".$script."\n";
         }
-
-        return $respuesta;
+        return $marcadores;
+        //return $respuesta;
     }
     
     public function buscarUsuario($usuario, $pass, $latitud, $longitud/*, $titulo*/) {

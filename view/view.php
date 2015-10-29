@@ -9,24 +9,24 @@ class View {
         $this->model = $model;
     }
 	
-	public function abrirHtml(){
-	    $abrir="<html>\n<head>\n";
-	    $abrir.="<meta charset='UTF-8' />\n";
-	    $abrir.="<link href='css/bootstrap.min.css' rel='stylesheet'>";
-	    $abrir.="<link href='css/bootstrap-theme.min.css' rel='stylesheet'>";
-	    $abrir.="<link href='css/mystyles.css' rel='stylesheet'>";
-	    $abrir.='<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
-	    $abrir.='<script src="js/bootstrap.min.js"></script>';
+	/*public function abrirHtml(){
+	    $abrir="<html>\n<head>\n
+            <meta charset='UTF-8' />\n
+            <link href='css/bootstrap.min.css' rel='stylesheet'>
+            <link href='css/bootstrap-theme.min.css' rel='stylesheet'>
+            <link href='css/mystyles.css' rel='stylesheet'>
+            <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+            <script src='js/bootstrap.min.js'></script>";
         //$abrir.="</head>\n";
         $abrir.=$this->scripts();
         return $abrir;
-	}
+	}*/
 	
-	public function abrirBody(){
+	/*public function abrirBody(){
 	    $abrir="</head>\n";
 	    $abrir.="<body  onload='mueveReloj()'>\n";
         return $abrir;
-	}
+	}*/
 	public function navbar(){
 	    $navbar='<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -75,14 +75,13 @@ class View {
     </nav>';
 	    return $navbar;
 	}    
-	public function scripts(){
+	/*public function scripts(){
 	    $scripts = "<script>var marcadores=[];
         </script>";
 	    return $scripts;
-	}
+	}*/
 	
-	public function scripterMapa(){
-
+	/*public function scripterMapa(){
 	    $scripter="<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg&callback=initialize' async defer></script>\n";
         $scripter.="<script>
         mapa='mapas';
@@ -109,29 +108,41 @@ class View {
         
         </script>\n";
         //$scripter.="</head>\n";
-	    return $scripter;
-	}
+	    return $scripter; 
+	}*/
 	
 	//static function marcarPosicion($x,$y){
-	static function marcarPosicion($title,$x,$y){
-	    $posicion=
-	            "<script>
-                //añadir un titulo en el array y en la base de datos 
+	static function marcarPosicion($titulo,$lat,$lng){
+	    /*$posicion="<script>
                 marcadores.push(['$title',$x,$y]); 
-                //marcadores.push(['prueba',$x,$y]);    
 	           </script>";
-	    return $posicion;
+	    return $posicion; */
+        // twig template para googlemaps
+        require_once 'vendor/autoload.php';
+        Twig_Autoloader::register();
+        $loader = new Twig_Loader_Filesystem('templates');
+        $twig = new Twig_Environment($loader);
+        /*$m1 = new m(-25.363, 131.044, "Hello");
+        $m2 = new m(-25.463, 131.144, "Hello2");
+        $m3 = new m(-25.563, 131.144, "Hello3");*/
+        //$markers = array($m1, $m2, $m3);
+        $markers = array();
+        array_push($markers, $lat, $lng, $titulo);
+        //var_dump($markers);
+        
+        // render
+        echo $twig->render('index.html', array('markers' => $markers));
 	}
 	
-	public function mapa(){
+	/*public function mapa(){
 	    return "<div id='map' style='width:100%;height:550px;'></div>";
-	}
+	}*/
 	
-	public function cerrarHtml(){
+	/*public function cerrarHtml(){
         $cerrar="</body>";
         $cerrar.="</html>";
         return $cerrar;
-	}
+	}*/
 	
     public function output(){
         $respuesta.="<table class='table table-striped'>
@@ -217,7 +228,7 @@ class View {
         return $respuesta;
     }
     
-    public function reloj(){
+    /*public function reloj(){
         $script='<script>function mueveReloj(){
                     momentoActual = new Date();
                     hora = momentoActual.getHours();
@@ -232,7 +243,7 @@ class View {
                 }
                 </script> ';
         return $script;
-    } 
+    } */
     
     public function enviarPosicion(){
        $script='<script type="text/javascript">

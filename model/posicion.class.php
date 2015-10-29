@@ -2,18 +2,18 @@
 class Posicion {
     private $latitud;
     private $longitud;
-    private $hora;
-    private $id_usuario;
+    //private $hora;
+    //private $id_usuario;
     private $id_posicion;
     private $titulo;
     //private $marca;
     
-    public function __construct($id_posicion, $latitud, $longitud, $hora, $id_usuario, $titulo) {
+    public function __construct($id_posicion, $latitud, $longitud,/* $hora, $id_usuario,*/ $titulo) {
         $this->id_posicion = $id_posicion;
         $this->latitud = $latitud;
         $this->longitud = $longitud;
-        $this->hora = $hora;
-        $this->id_usuario = $id_usuario;
+        //$this->hora = $hora;
+        //$this->id_usuario = $id_usuario;
         $this->titulo = $titulo;
         //$this->marca = $marca;
         //$this->model->insertarPosicion($latitud, $longitud, $hora, $id_usuario);

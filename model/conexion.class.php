@@ -11,7 +11,7 @@ class Conexion {
 			// ? cloud9 : local
 			$servername = getenv('C9_USER') ? getenv('IP') : "localhost";
 			// db cloud9 : db local
-			$database = getenv('C9_USER') ? "app-tracking" : "app-tracking";
+			$database = getenv('C9_USER') ? "app_tracking" : "app_tracking";
 			$dbport = 3306;
 			// user cloud9 : user local
 			$user = getenv('C9_USER') ? getenv('C9_USER') : "root";

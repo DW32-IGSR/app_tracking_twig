@@ -3,9 +3,8 @@
 require_once 'vendor/autoload.php';
 include_once("model/model.php");
 include_once("controller/controller.php");
-include_once("view/view.php");
 Twig_Autoloader::register();
-$loader = new Twig_Loader_Filesystem('templates');
+$loader = new Twig_Loader_Filesystem('view');
 $twig = new Twig_Environment($loader);
 
 $marcadores=Model::buscar_posiciones();

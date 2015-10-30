@@ -75,7 +75,7 @@ class Model {
         $stmt->bindParam(":id_usuario", $idusuario, PDO::PARAM_INT);
         $stmt->execute();
         //$respuesta="\n";
-        $_SESSION['id_usuario']=1;
+        //$_SESSION['id_usuario']=1;
         $marcadores = array();
         foreach ($stmt->fetchAll() as $row) {
             array_push($marcadores, new Posicion($row['id_posicion'],$row['latitud'],$row['longitud'],$row['hora'],$_SESSION['id_usuario'],$row['titulo']));
@@ -99,7 +99,7 @@ class Model {
             $_SESSION['id_usuario']=$row["id_usuario"];
             
             $titulo=date("Y-m-d H:i:s");
-            $this->insertarPosicion($row['id_usuario'], $latitud, $longitud, $titulo);
+            Model::insertarPosicion($row['id_usuario'], $latitud, $longitud, $titulo);
         }
     }
     public function registrarUsuario($usuario, $pass){

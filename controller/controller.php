@@ -1,7 +1,7 @@
 <?php
 session_start();
 //provisional
-$_SESSION['id_usuario']=1;
+//$_SESSION['id_usuario']=1;
     
 class Controller {
     private $model;
@@ -20,14 +20,14 @@ class Controller {
             echo "pruebas insercion2";
             session_start();
             //provisional
-            $_SESSION['id_usuario']=1;
+            //$_SESSION['id_usuario']=1;
             //provisional
             $id_usuario = $_SESSION['id_usuario'];
             $latitud = $_POST['latitud'];
             $longitud = $_POST['longitud'];
             $titulo = $_POST['titulo'];
             //$this->model->insertarPosicion($id_usuario,$latitud,$longitud, $titulo);
-            $this->model->insertarPosicion(1,$latitud,$longitud, $titulo);
+            $this->model->insertarPosicion($id_usuario,$latitud,$longitud, $titulo);
             echo "insercion completada fin";
             //header('Location: ../index.php');
         }
@@ -41,7 +41,8 @@ class Controller {
             $long = $_GET['long'];
             //configurando para insertar titulo
             //$titulo = $_GET['titulo'];
-            $this->model->buscarUsuario($usuario, $pass, $lat, $long/*, $titulo*/);
+            Model::buscarUsuario($usuario, $pass, $lat, $long/*, $titulo*/);
+            header('Location: ../index.php');
         }
     }
     

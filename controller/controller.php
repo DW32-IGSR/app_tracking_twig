@@ -2,6 +2,7 @@
 session_start();
 //provisional
 //$_SESSION['id_usuario']=1;
+//echo "pruebas";
     
 class Controller {
     private $model;
@@ -10,11 +11,11 @@ class Controller {
         $this->model = $model;
     }
 
-    public function mostrar_posiciones() {
+    /*public function mostrar_posiciones() {
     	$this->model->buscar_posiciones();
-    }
+    }*/
     
-    public function posicionar() {
+    /*public function posicionar() {
         echo "pruebas insercion1";
         if ($_POST['crearPosicion']){
             echo "pruebas insercion2";
@@ -31,9 +32,9 @@ class Controller {
             echo "insercion completada fin";
             //header('Location: ../index.php');
         }
-    }
+    }*/
     
-    public function login() {
+    /*public function login() {
         if ($_POST['login']){
             $usuario = $_POST['usuario'];
             $pass = $_POST['pass'];
@@ -41,10 +42,10 @@ class Controller {
             $long = $_GET['long'];
             //configurando para insertar titulo
             //$titulo = $_GET['titulo'];
-            Model::buscarUsuario($usuario, $pass, $lat, $long/*, $titulo*/);
+            Model::buscarUsuario($usuario, $pass, $lat, $long);
             header('Location: ../index.php');
         }
-    }
+    }*/
     
     public function register(){
         if ($_POST['register']){
@@ -57,14 +58,14 @@ class Controller {
         }
     }
     
-    public function destructorSesion(){
+    /*public function destructorSesion(){
         //vaciar la sesion
         session_start();
         session_destroy();
         header("location:index.php");
-    }
+    }*/
     
-    public function modificarPosicion() {
+    /*public function modificarPosicion() {
         if ($_POST['borrar']){
             $id_usuario = $_SESSION['id_usuario'];
             $id_posicion = $_POST['id_posicion'];
@@ -77,7 +78,7 @@ class Controller {
             //echo "$id_posicion, $latitud, $longitud, $titulo";
             $this->model->editarPosicion($id_posicion, $latitud, $longitud, $titulo); 
         }
-    }
+    }*/
 }
 
 
@@ -91,7 +92,7 @@ if (isset($_POST['crearPosicion'])){
     $longitud = $_POST['longitud'];
     $titulo = $_POST['titulo'];
     Model::insertarPosicion($id_usuario,$latitud,$longitud, $titulo);
-    header('Location: ../index.php');
+    header('Location: ../');
 }
 
 if (isset($_POST['borrar'])){
@@ -99,7 +100,7 @@ if (isset($_POST['borrar'])){
     $id_usuario = $_SESSION['id_usuario'];
     $id_posicion = $_POST['id_posicion'];
     Model::borrarPosicion($id_usuario, $id_posicion);
-    header('Location: ../index.php');
+    header('Location: ../');
 }
 if(isset($_POST['editar'])){
     include_once("../model/model.php");
@@ -109,7 +110,7 @@ if(isset($_POST['editar'])){
     $longitud = $_POST['longitud'];
     //echo "$id_posicion, $latitud, $longitud, $titulo";
     Model::editarPosicion($id_posicion, $latitud, $longitud, $titulo); 
-    header('Location: ../index.php');
+    header('Location: ../');
 }
 
 if (isset($_POST['login'])){
@@ -121,5 +122,13 @@ if (isset($_POST['login'])){
     //configurando para insertar titulo
     //$titulo = $_GET['titulo'];
     Model::buscarUsuario($usuario, $pass, $lat, $long/*, $titulo*/);
-    header('Location: ../index.php');
+    header('Location: ../');
 }
+
+/*function destructorSesion(){
+    //vaciar la sesion
+    echo "prueba";
+    session_start();
+    session_destroy();
+    //header("location:index.php");
+}*/

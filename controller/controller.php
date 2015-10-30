@@ -121,8 +121,20 @@ if (isset($_POST['login'])){
     $long = $_GET['long'];
     //configurando para insertar titulo
     //$titulo = $_GET['titulo'];
-    Model::buscarUsuario($usuario, $pass, $lat, $long/*, $titulo*/);
+    Model::buscarUsuario($usuario, $pass, $lat, $long);
     header('Location: ../');
+}
+
+if (isset($_POST['register'])){
+    include_once("../model/model.php");
+    $usuario = $_POST['usuario'];
+    $pass = $_POST['pass'];
+    $pass2 = $_POST['pass2'];
+    if($pass == $pass2){
+        Model::registrarUsuario($usuario, $pass);
+        header('Location: ../');
+        //echo "registro completado";
+    }
 }
 
 /*function destructorSesion(){

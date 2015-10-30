@@ -67,12 +67,12 @@ class Model {
     }
     
     public function buscar_posiciones(){
+        //echo "prueba  700 ".$_SESSION['id_usuario'];
         require_once("conexion.class.php");
         $db = Conexion::conectar();
     	$stmt = $db->prepare("SELECT id_posicion, latitud, longitud, hora, titulo FROM posicion WHERE id_usuario=:id_usuario");
         //$stmt->bindParam(":id_usuario", $_SESSION['id_usuario'], PDO::PARAM_INT);
-        $idusuario=1;
-        $stmt->bindParam(":id_usuario", $idusuario, PDO::PARAM_INT);
+        $stmt->bindParam(":id_usuario", $_SESSION['id_usuario'], PDO::PARAM_INT);
         $stmt->execute();
         //$respuesta="\n";
         //$_SESSION['id_usuario']=1;
@@ -84,6 +84,7 @@ class Model {
     }
     
     public function buscarUsuario($usuario, $pass, $latitud, $longitud) {
+        //echo "prueba 500 ".$_SESSION['id_usuario'];
         require_once("conexion.class.php");
         $db = Conexion::conectar();
     	$stmt = $db->prepare("SELECT * FROM usuario WHERE usuario=:usuario and pass=:pass");
@@ -102,6 +103,7 @@ class Model {
             Model::insertarPosicion($row['id_usuario'], $latitud, $longitud, $titulo);
         }
     }
+    
     public function registrarUsuario($usuario, $pass){
         require_once("conexion.class.php");
         $db = Conexion::conectar();

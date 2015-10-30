@@ -18,6 +18,7 @@ class Model {
     }
     
     public function insertarPosicion($id_usuario, $latitud, $longitud, $titulo) {
+        echo "insercion en marcha";
         require_once("conexion.class.php");
         $db = Conexion::conectar();
     	//$stmt = $db->prepare('INSERT INTO posicion (latitud, longitud, hora, id_usuario) VALUES (:latitud,:longitud,:hora,:id_usuario)');

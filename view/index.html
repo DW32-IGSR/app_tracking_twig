@@ -51,31 +51,35 @@
         </nav>
         
         <div id='mapa' style='width:100%;height:550px;'></div>
-        
-        <table class='table table-striped'>
-            <tr>
-                <th>Id</th><th>Nombre</th><th>Latitud</th><th>Longitud</th><th>Fecha</th><th>Usuario</th><td></td>
-            </tr>
-            {% for Posicion in markers %}
-                <!--<tr><td>{#{{Posicion.getTitulo()}}#}</td><td>{#{{Posicion.getLatitud()}#}}</td><td>{#{{Posicion.getLongitud()}#}}</td></tr>-->
-                <!--<tr>{#{{Posicion.mostrar()}}#}</tr>-->
+        <div class="table-responsive">
+            <table class='table table-striped'>
                 <tr>
-                    <!--<form action='index.php?action=modificarPosicion' method='POST' name='varias'>-->
-                    <form action='controller/controller.php' method='POST' name='varias'>
-                   	<td>{{Posicion.getId_posicion()}}</td> <input hidden name='id_posicion' value={{Posicion.getId_posicion()}} />
-                   	<td><input name='titulo' value='{{Posicion.getTitulo()}}' /></td>
-                   	<td><input name='latitud' value={{Posicion.getLatitud()}} /></td>
-                   	<td><input name='longitud' value={{Posicion.getLongitud()}} /></td>
-                   	<td>{{Posicion.getHora()}}</td>
-                   	<td>{{Posicion.getId_usuario()}}</td>
-                   	<td> 
-                       	<input type='submit' name='editar' value='Editar'>
-                       	<input type='submit' name='borrar' value='Borrar'>
-                   	</td>
-                   	</form>
-               	</tr>
-            {% endfor %}
-        </table>
+                    <th>Id</th><th>Nombre</th><th>Latitud</th><th>Longitud</th><th>Fecha</th><th>Usuario</th><td></td>
+                </tr>
+                {% for Posicion in markers %}
+                    <!--<tr><td>{#{{Posicion.getTitulo()}}#}</td><td>{#{{Posicion.getLatitud()}#}}</td><td>{#{{Posicion.getLongitud()}#}}</td></tr>-->
+                    <!--<tr>{#{{Posicion.mostrar()}}#}</tr>-->
+                    <tr>
+                        <!--<form action='index.php?action=modificarPosicion' method='POST' name='varias'>-->
+                        <form action='controller/controller.php' method='POST' name='varias'>
+                       	<td>{{Posicion.getId_posicion()}}</td> <input hidden name='id_posicion' value={{Posicion.getId_posicion()}} />
+                       	<td><input name='titulo' value='{{Posicion.getTitulo()}}' /></td>
+                       	<td><input name='latitud' value={{Posicion.getLatitud()}} /></td>
+                       	<td><input name='longitud' value={{Posicion.getLongitud()}} /></td>
+                       	<td>{{Posicion.getHora()}}</td>
+                       	<td>{{Posicion.getId_usuario()}}</td>
+                       	<td> 
+                           	<input type='submit' name='editar' value='Editar'>
+                           	<input type='submit' name='borrar' value='Borrar'>
+                       	</td>
+                       	</form>
+                   	</tr>
+                {% endfor %}
+                <tr>
+                    <th>Id</th><th>Nombre</th><th>Latitud</th><th>Longitud</th><th>Fecha</th><th>Usuario</th><td></td>
+                </tr>            
+            </table>
+        </div>    
         
         <!--error-->
         <!--<form action='index.php?action=posicionar' method='POST' name='posicionar'>-->
@@ -93,8 +97,6 @@
         </table>
         <input type='submit' name='crearPosicion' value='Enviar'>
         </form>
-        
-        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg&callback=initialize' async defer></script>
         <script>
         var milatitud;
         var milongitud;
@@ -123,5 +125,6 @@
             google.maps.event.addDomListener(window, 'load', initialize);
         }
         </script>
+        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyApO7P8vAubMM9T97jMJ2YDpAJuEeJ99yg&callback=initialize' async defer></script>
     </body>
 </html>

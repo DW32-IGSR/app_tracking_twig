@@ -81,8 +81,6 @@ class Controller {
     }*/
 }
 
-
-//solucion para formulario en index.html
 if (isset($_POST['crearPosicion'])){
     include_once("../model/model.php");
     session_start();

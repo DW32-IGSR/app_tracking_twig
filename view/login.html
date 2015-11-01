@@ -10,9 +10,9 @@
         <script src='../js/reloj.js'></script>
         <title>App-tracking-twig</title>
 </head>    
-<body>
+<body onload='mueveReloj()'>
     
-<div class="container-fluid">
+<div class="container">
     <script type='text/javascript'>
         if (typeof navigator.geolocation == 'object'){
             navigator.geolocation.getCurrentPosition(mostrar_ubicacion);
@@ -27,38 +27,126 @@
         }
     </script>
         <!--<form action='index.php?action=login' method='POST' name='formulario_login'>-->
-    <form id='formulario' action='' method='POST' name='formulario_login'>
-        <table>
-        <tr>
-        <td>Usuario: </td><td><input type='text' name='usuario'><td>
-        </tr>
-        <tr>
-        <td>Contraseña: </td><td><input type='password' name='pass'></td> 
-        </tr>
-        <tr>
-        <td><input type='submit' name='login' value='Entrar'></td>
-        </tr>
-        </table>
-    </form>
-</div>
-<br/><br/><br/>
-<div class="container-fluid">
-    <form action='../controller/controller.php' method='POST' name='formulario_register'>
-            <table bgcolor='lightblue'>
-            <tr>
-                <td>Usuario: </td><td><input type='text' name='usuario'></td>
-            </tr>
-            <tr>
-                <td>Contraseña: </td><td><input type='password' name='pass'><td>
-            </tr>
-            <tr>
-                <td>Repita la contraseña </td><td><input type='password' name='pass2'><td>
-            </tr>
-            <tr>
-                <td><input type='submit' name='register' value='Registrar'></td>
-            </tr>
-            </table>
-    </form>
-</div>
+ 
+ 
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">APP-TRACKING</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#"></span>Login</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Autores<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Rubén Álvarez</a></li>
+                        <li><a href="#">Gorka Pérez</a></li>
+                        <li><a href="#">Iosu Recalde</a></li>
+                        <li><a href="#">Sergio Varela</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-center">
+                <li>
+                    <a id="reloj">Cargando reloj</a>
+                </li> 
+            </ul>
+            <div class="nav navbar-nav navbar-right">
+                <!--<li><a href="controller/logout.php">Cerrar sesión</a></li>-->
+                <!--<li>-->
+                    <!--<form id='formulario' class="form-inline" role="form" action='' method='POST' name='formulario_login'>
+                        <div  class="form-group">
+                            <label class="sr-only" for="usuario">Usuario:</label>
+                            <div style="{padding: 15px 15px;}" class="col-sm-5">
+                                <input class="form-control" type='text' placeholder="usuario" name='usuario' />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only"for="pass">Contraseña:</label>
+                            <input class="form-control" type='password' placeholder="Password" name='pass' />
+                        </div>
+                        <!--<input type='submit' name='login' value='Entrar'>-->
+                        <!--<button type="submit" name="login" class="btn btn-info">Entrar</button>
+                    </form>-->
+                <!--/li>-->
+            </div>                
+        </div>    
+    </div>
+</nav>
+<br/><br/>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4 class="panel-title">Inicio de sesion</h4>
+    </div>
+    <div class="panel-body">
+        <!-- description list -->
+        <dl class="dl-horizontal">
+            <dd>
+                <form id='formulario' class="form-horizontal" role="form" action='' method='POST' name='formulario_login'>
+                    <div  class="form-group">
+                        <label class="col-sm-2 control-label" for="usuario">Usuario:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='text' placeholder="usuario" name='usuario' />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"for="pass">Contraseña:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='password' placeholder="Password" name='pass' />
+                        </div>
+                    </div>
+                    <!--<input type='submit' name='login' value='Entrar'>-->
+                    <div class="col-sm-2"></div>
+                    <button class="btn btn-info" type="submit" name="login" >Entrar</button>
+                </form>
+            </dd>
+        </dl>
+    </div>
+</div>    
+<br/><br/>    
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4 class="panel-title">Registro de usuario</h4>
+    </div>
+    <div class="panel-body">
+        <!-- description list -->
+        <dl class="dl-horizontal">
+            <dd>
+                <form class="form-horizontal" action='../controller/controller.php' method='POST' name='formulario_register'>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="usuario">Usuario:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='text' name='usuario'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="pass">Contraseña:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='password' name='pass'>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="pass2">Repita la contraseña:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='password' name='pass2'>
+                        </div>
+                    </div> 
+                    <!--<input type='submit' name='register' value='Registrar'>-->
+                    <div class="col-sm-2"></div>
+                    <button class="btn btn-info" type="submit" name="register">Enviar</button>
+                </form>
+            </dd>
+        </dl>
+    </div>
+</div>   
 </body>
 </html>

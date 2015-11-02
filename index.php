@@ -4,10 +4,6 @@ require_once 'vendor/autoload.php';
 include_once("model/model.php");
 include_once("controller/controller.php");
 
-$model = new Model();
-$controller = new Controller($model);
-//$view = new View($controller, $model);
-    
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('view');
 $twig = new Twig_Environment($loader);

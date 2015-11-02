@@ -3,19 +3,19 @@ include("posicion.class.php");
 include("usuario.class.php");
 session_start();
 class Model {
-    public $posicion;
-    public $datos;
-    public $latitud;
-    public $longitud;
+    private $posicion;
+    private $datos;
+    private $latitud;
+    private $longitud;
     
-    public $nombre;
-    public $pass;
-    public $usuario;
+    private $nombre;
+    private $pass;
+    private $usuario;
     
-    public function __construct() {
+    /*public function __construct() {
         //$this->string = "MVC + PHP = Awesome!";
         //$this->posicion=$this->buscar_posiciones();
-    }
+    }*/
     
     public function insertarPosicion($id_usuario, $latitud, $longitud, $titulo) {
         echo "insercion en marcha";

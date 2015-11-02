@@ -18,16 +18,13 @@
             navigator.geolocation.getCurrentPosition(mostrar_ubicacion);
         }
         function mostrar_ubicacion(p){
-            var latti = p.coords.latitude;
-            var longi = p.coords.longitude;
+            var latitud = p.coords.latitude;
+            var longitud = p.coords.longitude;
             //var titulo = 'prueba32';
             //alert(latti+' , '+longi);
-            //document.getElementById('formulario').action='index.php?action=login&titulo='+titulo+'&lat='+latti+'&long='+longi;
-            document.getElementById('formulario').action='../controller/controller.php?login&lat='+latti+'&long='+longi;
+            document.getElementById('formulario').action='../controller/controller.php?login&lat='+latitud+'&long='+longitud;
         }
     </script>
-        <!--<form action='index.php?action=login' method='POST' name='formulario_login'>-->
- 
  
  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -62,22 +59,20 @@
             </ul>
             <div class="nav navbar-nav navbar-right">
                 <!--<li><a href="controller/logout.php">Cerrar sesión</a></li>-->
-                <!--<li>-->
-                    <!--<form id='formulario' class="form-inline" role="form" action='' method='POST' name='formulario_login'>
-                        <div  class="form-group">
-                            <label class="sr-only" for="usuario">Usuario:</label>
-                            <div style="{padding: 15px 15px;}" class="col-sm-5">
-                                <input class="form-control" type='text' placeholder="usuario" name='usuario' />
-                            </div>
+                <!--<form class="navbar-form navbar-right" id='formulario'  role="form" action='' method='POST' name='formulario_login'>
+                    <div  class="form-group">
+                        <label class="sr-only" for="usuario">Usuario:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='text' placeholder="usuario" name='usuario' />
                         </div>
-                        <div class="form-group">
-                            <label class="sr-only"for="pass">Contraseña:</label>
-                            <input class="form-control" type='password' placeholder="Password" name='pass' />
-                        </div>
-                        <!--<input type='submit' name='login' value='Entrar'>-->
-                        <!--<button type="submit" name="login" class="btn btn-info">Entrar</button>
-                    </form>-->
-                <!--/li>-->
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only"for="pass">Contraseña:</label>
+                        <input class="form-control" type='password' placeholder="Password" name='pass' />
+                    </div>
+                    <!--<input type='submit' name='login' value='Entrar'>-->
+                    <!--<button type="submit" name="login" class="btn btn-info">Entrar</button>
+                </form>-->
             </div>                
         </div>    
     </div>
@@ -85,7 +80,7 @@
 <br/><br/>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h4 class="panel-title">Inicio de sesion<button class="btn btn-xs pull-right">&times;</button></h4>
+        <h4 class="panel-title">Inicio de sesion</h4>
     </div>
     <div class="panel-body">
         <!-- description list -->
@@ -93,7 +88,7 @@
             <dd>
                 <form id='formulario' class="form-horizontal" role="form" action='' method='POST' name='formulario_login'>
                     <div  class="form-group">
-                        <label class="col-sm-2 control-label" for="usuario">Usuario:</label>
+                        <label class="col-sm-2 control-label" for="usuario">Usuario / Email:</label>
                         <div class="col-sm-5">
                             <input class="form-control" type='text' placeholder="usuario" name='usuario' />
                         </div>
@@ -115,7 +110,7 @@
 <br/><br/>    
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h4 class="panel-title">Registro de usuario<button class="btn btn-xs pull-right">&times;</button></h4>
+        <h4 class="panel-title">Registro de usuario</h4>
     </div>
     <div class="panel-body">
         <!-- description list -->
@@ -126,6 +121,12 @@
                         <label class="col-sm-2 control-label" for="usuario">Usuario:</label>
                         <div class="col-sm-5">
                             <input class="form-control" type='text' name='usuario'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="usuario">Email:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='email' name='email'>
                         </div>
                     </div>
                     <div class="form-group">

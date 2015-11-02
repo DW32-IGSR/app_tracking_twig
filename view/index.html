@@ -83,20 +83,34 @@
         
         <!--error-->
         <!--<form action='index.php?action=posicionar' method='POST' name='posicionar'>-->
-        <form action='controller/controller.php' method='POST' name='posicionar'>    
-        <table>
-            <tr>
-                <td> Título: </td> <td> <input type='text' name='titulo'></td>
-            </tr>
-            <tr>
-                <td> Latitud: </td> <td> <input type='text' name='latitud'></td>
-            </tr>
-            <tr>
-                <td> Longitud: </td> <td> <input type='text' name='longitud'></td>
-            </tr>
-        </table>
-        <input type='submit' name='crearPosicion' value='Enviar'>
-        </form>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Añadir Posicion</h4>
+            </div>   
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <form class="form-horizontal" action='controller/controller.php' method='POST' name='posicionar'> 
+                    <div  class="form-group">
+                        <label class="col-sm-2 control-label" for="usuario">Título:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='text' placeholder="titulo" name='titulo' />
+                        </div>
+                    </div>
+                    <div  class="form-group">
+                        <label class="col-sm-2 control-label" for="usuario">latitud:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='text' placeholder="latitud" name='latitud' />
+                        </div>
+                    </div>    
+                    <div  class="form-group">    
+                        <label class="col-sm-2 control-label" for="usuario">longitud:</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type='text' placeholder="longitud" name='longitud' />
+                        </div>
+                    </div>
+                    <button class="col-sm-offset-2 btn btn-info" type="submit" name="crearPosicion" >Entrar</button>
+                    </form>
+        </div>
         <script>
         var milatitud;
         var milongitud;

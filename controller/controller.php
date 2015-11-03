@@ -96,7 +96,7 @@ if (isset($_POST['register'])){
         array('from'    => 'Todo-List IGSR <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
             //'to'      => 'IGSR <dw32igsr@gmail.com>',
             'to'      => $usuario . ' ' .$email,
-            'subject' => 'Registro en Todo-List',
+            'subject' => 'Registro en App-Tracking',
             //'text'    => 'Mensaje desde Cloud9'));
             'text'    => "Hola $usuario!
                         Gracias por registrarse en nuestro sitio.

@@ -25,5 +25,5 @@ if ($total == 1) {
 		echo "Tu cuenta ha sido activada.";
 		ob_end_flush();
 } else {
-    echo "<br>Error en la activación de la cuenta.";
+    echo "<br>Error en la activacion de la cuenta.";
 }

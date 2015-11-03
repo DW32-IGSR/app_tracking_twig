@@ -28,10 +28,10 @@ $email = $_POST[''];
 
 # Make the call to the client.
 $result = $mgClient->sendMessage("$domain",
-array('from'    => 'Todo-List IGSR <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
+array('from'    => 'APP-TRACKING IGSR <postmaster@sandboxe7f47692877a4fd6b2115e79c3ce660d.mailgun.org>',
     //'to'      => 'IGSR <dw32igsr@gmail.com>',
     'to'      => $nombre . ' ' .$email,
-    'subject' => 'Registro en Todo-List',
+    'subject' => 'Registro en APP-TRACKING',
     //'text'    => 'Mensaje desde Cloud9'));
     'text'    => "Hola $nombre!
                 Gracias por registrarse en nuestro sitio.

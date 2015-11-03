@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once 'vendor/autoload.php';
+require 'vendor/autoload.php';
 include_once("model/model.php");
-include_once("controller/controller.php");
 
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('view');
@@ -18,6 +17,5 @@ if (isset($_SESSION['id_usuario'])){
 	echo $twig->render('login.html', 
 						array(
 							//'markers' => $marcadores
-							));	
+							));
 }							
-?>

@@ -113,15 +113,27 @@ class Model {
         $stmt->execute();
     }*/
     
-    public function registrarUsuario($usuario, $pass, $email){
+    /*public function registrarUsuario($usuario, $pass, $email){
         require_once("conexion.class.php");
         $db = Conexion::conectar();
         $stmt = $db->prepare("INSERT INTO usuario (usuario, pass, email) VALUES (:usuario, :pass, :email)");
         $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
         $stmt->bindParam(":pass", md5($pass), PDO::PARAM_STR);
         $stmt->bindParam(":email", $email);
-        /*$stmt->bindParam(":activacion_key", $random_key);
-        $stmt->bindParam(":validated", $validated);*/
+        $stmt->bindParam(":activacion_key", $random_key);
+        $stmt->bindParam(":validated", $validated);
+        $stmt->execute();
+    }*/
+    
+    public function registrarUsuario($usuario, $pass, $email, $random_key, $validated){
+        require_once("conexion.class.php");
+        $db = Conexion::conectar();
+        $stmt = $db->prepare("INSERT INTO usuario (usuario, pass, email, activacion_key, validated) VALUES (:usuario, :pass, :email, :activacion_key, :validated)");
+        $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
+        $stmt->bindParam(":pass", md5($pass), PDO::PARAM_STR);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":activacion_key", $random_key);
+        $stmt->bindParam(":validated", $validated);
         $stmt->execute();
     }
 }

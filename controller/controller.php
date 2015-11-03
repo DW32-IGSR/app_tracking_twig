@@ -13,7 +13,7 @@ if (isset($_POST['crearPosicion'])){
     $latitud = $_POST['latitud'];
     $longitud = $_POST['longitud'];
     $titulo = $_POST['titulo'];
-    Model::insertarPosicion($id_usuario,$latitud,$longitud, $titulo);
+    Model::insertarPosicion($id_usuario, $titulo, $latitud, $longitud );
     header('Location: ../');
 }
 
@@ -31,7 +31,7 @@ if(isset($_POST['editar'])){
     $latitud = $_POST['latitud'];
     $longitud = $_POST['longitud'];
     //echo "$id_posicion, $latitud, $longitud, $titulo";
-    Model::editarPosicion($id_posicion, $latitud, $longitud, $titulo); 
+    Model::editarPosicion($id_posicion, $titulo, $latitud, $longitud); 
     header('Location: ../');
 }
 
@@ -39,21 +39,22 @@ if (isset($_POST['login'])){
     include_once("../model/model.php");
     $usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
-    $lat = $_GET['lat'];
-    $long = $_GET['long'];
+    $latitud = $_GET['latitud'];
+    $longitud = $_GET['longitud'];
     //configurando para insertar titulo
     //$titulo = $_GET['titulo'];
-    Model::buscarUsuario($usuario, $pass, $lat, $long);
+    Model::buscarUsuario($usuario, $pass, $latitud, $longitud);
     header('Location: ../');
 }
 
 if (isset($_POST['register'])){
     include_once("../model/model.php");
     $usuario = $_POST['usuario'];
+    $email = $_POST['email'];
     $pass = $_POST['pass'];
     $pass2 = $_POST['pass2'];
     if($pass == $pass2){
-        Model::registrarUsuario($usuario, $pass);
+        Model::registrarUsuario($usuario, $pass, $email);
         header('Location: ../');
         //echo "registro completado";
     }

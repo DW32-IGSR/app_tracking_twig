@@ -87,7 +87,7 @@
         
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4 class="panel-title">Añadir Posicion</h4>
+                    <h4 class="panel-title">Añadir Posición</h4>
                 </div>   
                 <div class="panel-body">
                     <dl class="dl-horizontal">
@@ -140,6 +140,20 @@
                 title: '{{ Posicion.getTitulo() }}'
               });
             {% endfor %}
+            
+            //path
+            var ruta = [];
+            {% for Posicion in markers %}
+                ruta.push({lat: {{ Posicion.getLatitud() }}, lng: {{ Posicion.getLongitud() }} })
+            {% endfor %}    
+            var lineas = new google.maps.Polyline({
+                path: ruta,
+                map: map,
+                strokeColor: '#222000',
+                strokeWeight: 4,
+                strokeOpacity: 0.6,
+                clickable: false
+            });
             google.maps.event.addDomListener(window, 'load', initialize);
         }
         </script>

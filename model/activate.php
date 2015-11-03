@@ -19,13 +19,11 @@ if ($total == 1) {
         echo 'Connection failed: ' . $e->getMessage();
     }
 
-    //echo "<br>¡Bienvenido!";
-    //sleep(3);
     ob_start();
 		header('refresh: 3; ../');
 		echo "<br>¡Bienvenido!";
+		echo "Tu cuenta ha sido activada.";
 		ob_end_flush();
-    //header("location:../");
 } else {
-    echo "<br>no hay";
+    echo "<br>Error en la activación de la cuenta.";
 }

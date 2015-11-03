@@ -94,36 +94,19 @@ class Model {
         $respuesta="";
         foreach ($stmt->fetchAll() as $row) {
             //var_dump($row);
-            $usuario=new Usuario($row['id_usuario'],$row["usuario"],$row["pass"]);
-            echo "<p>".$usuario->mostrar()."</p>";
-            //session_start();
-            $_SESSION['id_usuario']=$row["id_usuario"];
-            
-            $titulo=date("Y-m-d H:i:s");
-            Model::insertarPosicion($row['id_usuario'], $titulo, $latitud, $longitud);
+            if ($row['validated'] == 1) {
+                $usuario=new Usuario($row['id_usuario'],$row["usuario"],$row["pass"]);
+                echo "<p>".$usuario->mostrar()."</p>";
+                //session_start();
+                $_SESSION['id_usuario']=$row["id_usuario"];
+                
+                $titulo=date("Y-m-d H:i:s");
+                Model::insertarPosicion($row['id_usuario'], $titulo, $latitud, $longitud);
+            } else {
+                echo "No estas activado";
+            }
         }
     }
-    
-    /*public function registrarUsuario($usuario, $pass){
-        require_once("conexion.class.php");
-        $db = Conexion::conectar();
-        $stmt = $db->prepare("INSERT INTO usuario (usuario, pass) VALUES (:usuario, :pass)");
-        $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
-        $stmt->bindParam(":pass", md5($pass), PDO::PARAM_STR);
-        $stmt->execute();
-    }*/
-    
-    /*public function registrarUsuario($usuario, $pass, $email){
-        require_once("conexion.class.php");
-        $db = Conexion::conectar();
-        $stmt = $db->prepare("INSERT INTO usuario (usuario, pass, email) VALUES (:usuario, :pass, :email)");
-        $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
-        $stmt->bindParam(":pass", md5($pass), PDO::PARAM_STR);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":activacion_key", $random_key);
-        $stmt->bindParam(":validated", $validated);
-        $stmt->execute();
-    }*/
     
     public function registrarUsuario($usuario, $pass, $email, $random_key, $validated){
         require_once("conexion.class.php");
